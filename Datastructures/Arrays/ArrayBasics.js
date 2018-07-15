@@ -59,6 +59,49 @@ const ArrayBasics = () => {
   // shallow copy
   console.log(`shallow copy of arrayUnderTest is ${arrayUnderTest.slice()}`)
 
+  // if you just want to know if element exists in array
+  console.log(`is 6 in array ? ${arrayUnderTest.includes(6)}, is 100 in array ? ${arrayUnderTest.includes(100)}`)
+
+  // Iteration Methods
+  const iterator = arrayUnderTest.entries()
+  console.log('sets of elements with index')
+  console.log(iterator.next().value)
+  console.log(iterator.next().value)
+  console.log(iterator.next().value)
+
+  // returns true if every element satisfies the condition
+  // condition
+  const isElementPositive = elem => elem > 0
+  console.log(`are all elements positive ? ${arrayUnderTest.every(isElementPositive)}`)
+
+  // Filter
+  // remove all 7s from array
+  console.log(`Before: ${arrayUnderTest}`)
+  console.log(`After: ${arrayUnderTest.filter(elem => elem !== 7)}`)
+
+  // map
+  const arrayUnderTestAdd2 = arrayUnderTest.map(elem => elem + 2)
+  console.log(`After adding 2 to all elems: ${arrayUnderTestAdd2}`)
+
+  // reduce
+  const result = arrayUnderTest.reduce((acc, elem) => {
+    return acc + elem
+  }, 0)
+  console.log(`sum of elems: ${result}`)
+
+  // some
+  const resultSome = arrayUnderTest.some((value, index, array) => {
+    return value === 6
+  })
+  console.log(`Atleast one value is 7 ${resultSome}`)
+
+  // sort with custom comparison
+  const arrayUnderTestComparison = [{ sum: 40 }, { sum: 50 }, { sum: 60 }, { sum: 70 }, { sum: 10 }]
+  const comparator = (item1, item2) => item1.sum > item2.sum
+
+  const resultSorted = arrayUnderTestComparison.sort(comparator)
+  console.log(resultSorted)
+
   console.log('======================== complete ========================')
 }
 
